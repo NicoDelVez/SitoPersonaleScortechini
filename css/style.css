@@ -1,0 +1,373 @@
+*,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --blue-dark:#0a2540;
+    --blue-mid:#2c7da0;
+    --blue-light:#5dade2;
+    --blue-pale:#e2edf7;
+    --accent:#20c997;
+    --text-main:#1a2a3f;
+    --text-muted:#4a627a;
+    --text-soft:#93b7cf;
+    --bg-page:#f0f4f8;
+    --bg-card:#fff;
+    --bg-alt:#f8fafc;
+    --border:#e8edf2;
+    --radius-lg:20px;
+    --radius-xl:28px;
+    --shadow-sm:0 2px 8px rgba(0,0,0,.05);
+    --shadow-md:0 8px 30px rgba(0,0,0,.06);
+    --shadow-hover:0 20px 35px -12px rgba(10,37,64,.14);
+    --transition:.25s ease;
+}
+
+body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg-page);
+    color:var(--text-main);
+    line-height:1.6;
+}
+
+h1,h2,h3,h4{
+    font-weight:600;
+    letter-spacing:-.02em;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 24px;
+}
+
+header,footer{
+    background:var(--blue-dark);
+}
+
+header{
+    color:#fff;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+footer{
+    color:var(--text-soft);
+    text-align:center;
+    padding:1.8rem;
+    margin-top:3rem;
+    font-size:.83rem;
+}
+
+.logo-area{
+    text-align:center;
+    padding:2rem 0 1rem;
+}
+
+.logo-area h1{
+    font-size:2.2rem;
+    color:#fff;
+}
+
+.logo-area p{
+    font-size:.95rem;
+    color:var(--text-soft);
+    margin-top:.4rem;
+}
+
+.nav-menu{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:.4rem;
+    list-style:none;
+    padding:.8rem 0 1rem;
+}
+
+.nav-menu a{
+    display:inline-block;
+    padding:.55rem 1.2rem;
+    border-radius:40px;
+    color:#d9e8f2;
+    text-decoration:none;
+    font-size:.88rem;
+    font-weight:500;
+    transition:all var(--transition);
+}
+
+.nav-menu a:hover{
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+.nav-menu a.active{
+    background:var(--blue-mid);
+    color:#fff;
+    font-weight:600;
+}
+
+.hero{
+    background:linear-gradient(135deg,#fff 0%,#f5f9ff 100%);
+    border-radius:var(--radius-xl);
+    padding:3rem 2rem;
+    margin:2rem 0;
+    text-align:center;
+    border:1px solid var(--blue-pale);
+    box-shadow:var(--shadow-md);
+}
+
+.hero h2{
+    font-size:2.4rem;
+    background:linear-gradient(135deg,var(--blue-dark),var(--blue-mid));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:.8rem;
+}
+
+.hero p{
+    font-size:1.15rem;
+    color:var(--text-muted);
+    max-width:580px;
+    margin:auto;
+}
+
+.content-section{
+    background:var(--bg-card);
+    border-radius:var(--radius-xl);
+    padding:2.5rem;
+    margin-bottom:2.5rem;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-md);
+    animation:fadeIn .45s ease-out both;
+}
+
+.content-section>h2{
+    font-size:1.7rem;
+    color:var(--blue-dark);
+    border-left:5px solid var(--blue-mid);
+    padding-left:1.1rem;
+    margin-bottom:2rem;
+}
+
+/* GRIGLIE */
+.info-grid,.subjects-grid,.projects-grid,.civica-grid{
+    display:grid;
+    gap:1.5rem;
+    margin:1.5rem 0;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+/* CARD */
+.info-card,.subject-card,.timeline-item,.project-card,.civica-card-simple{
+    background:var(--bg-card);
+    padding:1.6rem;
+    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
+    transition:transform var(--transition),box-shadow var(--transition);
+}
+
+.info-card::before,.subject-card::before,.timeline-item::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:4px;
+    height:100%;
+    background:linear-gradient(180deg,var(--blue-mid),var(--blue-light));
+}
+
+.info-card,.subject-card,.timeline-item{
+    position:relative;
+    overflow:hidden;
+}
+
+.info-card:hover,.subject-card:hover,.timeline-item:hover,.project-card:hover,.civica-card-simple:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-hover);
+}
+
+.info-card h3,.subject-card h3,.timeline-item h3{
+    color:#1a4b6e;
+    margin-bottom:.8rem;
+    font-size:1.2rem;
+}
+
+.project-card h4{
+    color:#1a4b6e;
+    margin:.7rem 0 .3rem;
+}
+
+/* LISTE */
+.custom-list,.info-card ul,.subject-card ul{
+    list-style:none;
+}
+
+.custom-list li,.info-card li,.subject-card li{
+    position:relative;
+    padding-left:1.5rem;
+    margin-bottom:.7rem;
+    font-size:.93rem;
+    color:#2c3e50;
+}
+
+.custom-list li::before,.info-card li::before,.subject-card li::before{
+    content:"→";
+    position:absolute;
+    left:0;
+    color:var(--blue-mid);
+}
+
+.experience-timeline{
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+}
+
+/* RIFLESSIONI */
+.reflection{
+    background:var(--bg-alt);
+    padding:1.8rem;
+    margin:2rem 0;
+    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
+    border-left:4px solid var(--blue-mid);
+}
+
+.reflection h3{
+    color:var(--blue-dark);
+    margin-bottom:.8rem;
+    font-size:1.2rem;
+}
+
+/* PROGETTI */
+.projects-section>h3{
+    font-size:1.4rem;
+    color:var(--blue-dark);
+    margin-bottom:1rem;
+}
+
+.project-card{
+    text-align:center;
+    background:#fafcff;
+}
+
+/* BOTTONI NAVIGAZIONE */
+.navigation-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:1rem;
+    margin-top:2.5rem;
+    padding-top:1.5rem;
+    border-top:1px solid var(--blue-pale);
+}
+
+.nav-button{
+    background:var(--blue-dark);
+    color:#fff;
+    padding:.65rem 1.6rem;
+    border-radius:40px;
+    text-decoration:none;
+    font-size:.88rem;
+    font-weight:500;
+    transition:all var(--transition);
+}
+
+.nav-button:hover{
+    background:var(--blue-mid);
+    transform:translateY(-2px);
+}
+
+/* EDUCAZIONE CIVICA */
+.civica-card-simple{
+    text-align:center;
+    border-left:4px solid var(--blue-mid);
+}
+
+.civica-card-simple.alt{
+    border-left-color:#6c757d;
+}
+
+.civica-card-simple h3{
+    color:var(--blue-dark);
+    font-size:1.4rem;
+    margin-bottom:.5rem;
+}
+
+.civica-card-simple.alt h3{
+    color:#495057;
+}
+
+.civica-card-simple p{
+    color:var(--text-muted);
+    font-size:.9rem;
+    margin-bottom:1.2rem;
+}
+
+.civica-button{
+    display:inline-block;
+    padding:.5rem 1.2rem;
+    background:var(--blue-mid);
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-size:.85rem;
+    font-weight:500;
+    transition:all var(--transition);
+}
+
+.civica-card-simple.alt .civica-button{
+    background:#6c757d;
+}
+
+.civica-button:hover{
+    background:var(--blue-dark);
+    transform:translateY(-2px);
+}
+
+.civica-card-simple.alt .civica-button:hover{
+    background:#495057;
+}
+
+.civica-reflection-final{
+    background:linear-gradient(135deg,#f1f8f9,#e8f4f5);
+    padding:1.8rem 2.2rem;
+    margin:2rem 0;
+    border-radius:var(--radius-lg);
+    border:1px solid #cfe2e6;
+    border-left:5px solid var(--accent);
+}
+
+.civica-reflection-final h3{
+    color:#1e7e5c;
+    margin-bottom:.8rem;
+    font-size:1.35rem;
+}
+
+.civica-reflection-final p{
+    color:#2c5a4a;
+    line-height:1.75;
+}
+
+/* ANIMAZIONE */
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(16px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .logo-area h1{font-size:1.7rem}
+    .hero h2{font-size:1.8rem}
+    .hero p{font-size:1rem}
+    .content-section{padding:1.4rem}
+    .content-section>h2{font-size:1.4rem}
+    .nav-menu a{padding:.5rem .9rem;font-size:.82rem}
+    .navigation-buttons{flex-direction:column;align-items:stretch}
+    .nav-button{text-align:center}
+    .civica-reflection-final{padding:1.1rem}
+}
