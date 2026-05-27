@@ -51,6 +51,8 @@ header{
     color:#fff;
     border-bottom:1px solid rgba(255,255,255,.08);
     box-shadow:0 4px 20px rgba(0,0,0,.15);
+    position:relative;
+    z-index:100;
 }
 
 footer{
@@ -77,6 +79,7 @@ footer{
     margin-top:.4rem;
 }
 
+/* DROPDOWN NAVBAR */
 .nav-menu{
     display:flex;
     justify-content:center;
@@ -86,7 +89,11 @@ footer{
     padding:.8rem 0 1rem;
 }
 
-.nav-menu a{
+.nav-menu > li {
+    position: relative;
+}
+
+.nav-menu > li > a {
     display:inline-block;
     padding:.55rem 1.2rem;
     border-radius:40px;
@@ -97,16 +104,62 @@ footer{
     transition:all var(--transition);
 }
 
-.nav-menu a:hover{
+.nav-menu > li > a:hover {
     background:rgba(255,255,255,.1);
     color:#fff;
     transform:translateY(-2px);
 }
 
-.nav-menu a.active{
+.nav-menu > li > a.active {
     background:var(--blue-mid);
     color:#fff;
     font-weight:600;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-card);
+    min-width: 220px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hover);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition);
+    z-index: 100;
+    list-style: none;
+    padding: 0.5rem 0;
+    border: 1px solid var(--border);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all var(--transition);
+}
+
+.dropdown-menu li a:hover {
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+}
+
+.nav-menu > li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown indicator */
+.has-dropdown > a::after {
+    content: " ▼";
+    font-size: 0.7rem;
+    opacity: 0.7;
 }
 
 .hero{
@@ -153,6 +206,29 @@ footer{
     margin-bottom:2rem;
 }
 
+/* Detail content per pagine singole */
+.detail-content {
+    line-height: 1.8;
+}
+
+.detail-content p {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.detail-content strong {
+    color: var(--blue-dark);
+}
+
+.detail-content ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.detail-content li {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+}
+
 /* GRIGLIE */
 .info-grid,.subjects-grid,.projects-grid,.civica-grid{
     display:grid;
@@ -162,7 +238,7 @@ footer{
 }
 
 /* CARD */
-.info-card,.subject-card,.timeline-item,.project-card,.civica-card-simple{
+.info-card,.timeline-item,.project-card,.civica-card-simple{
     background:var(--bg-card);
     padding:1.6rem;
     border-radius:var(--radius-lg);
@@ -170,7 +246,12 @@ footer{
     transition:transform var(--transition),box-shadow var(--transition);
 }
 
-.info-card::before,.subject-card::before,.timeline-item::before{
+.info-card,.timeline-item{
+    position:relative;
+    overflow:hidden;
+}
+
+.info-card::before,.timeline-item::before{
     content:'';
     position:absolute;
     top:0;
@@ -180,17 +261,12 @@ footer{
     background:linear-gradient(180deg,var(--blue-mid),var(--blue-light));
 }
 
-.info-card,.subject-card,.timeline-item{
-    position:relative;
-    overflow:hidden;
-}
-
-.info-card:hover,.subject-card:hover,.timeline-item:hover,.project-card:hover,.civica-card-simple:hover{
+.info-card:hover,.timeline-item:hover,.project-card:hover,.civica-card-simple:hover{
     transform:translateY(-4px);
     box-shadow:var(--shadow-hover);
 }
 
-.info-card h3,.subject-card h3,.timeline-item h3{
+.info-card h3,.timeline-item h3{
     color:#1a4b6e;
     margin-bottom:.8rem;
     font-size:1.2rem;
@@ -201,12 +277,11 @@ footer{
     margin:.7rem 0 .3rem;
 }
 
-/* LISTE */
-.custom-list,.info-card ul,.subject-card ul{
+.custom-list,.info-card ul{
     list-style:none;
 }
 
-.custom-list li,.info-card li,.subject-card li{
+.custom-list li,.info-card li{
     position:relative;
     padding-left:1.5rem;
     margin-bottom:.7rem;
@@ -214,7 +289,7 @@ footer{
     color:#2c3e50;
 }
 
-.custom-list li::before,.info-card li::before,.subject-card li::before{
+.custom-list li::before,.info-card li::before{
     content:"→";
     position:absolute;
     left:0;
@@ -227,7 +302,6 @@ footer{
     gap:1.4rem;
 }
 
-/* RIFLESSIONI */
 .reflection{
     background:var(--bg-alt);
     padding:1.8rem;
@@ -243,7 +317,6 @@ footer{
     font-size:1.2rem;
 }
 
-/* PROGETTI */
 .projects-section>h3{
     font-size:1.4rem;
     color:var(--blue-dark);
@@ -255,7 +328,6 @@ footer{
     background:#fafcff;
 }
 
-/* BOTTONI NAVIGAZIONE */
 .navigation-buttons{
     display:flex;
     flex-wrap:wrap;
@@ -353,13 +425,11 @@ footer{
     line-height:1.75;
 }
 
-/* ANIMAZIONE */
 @keyframes fadeIn{
     from{opacity:0;transform:translateY(16px)}
     to{opacity:1;transform:translateY(0)}
 }
 
-/* RESPONSIVE */
 @media(max-width:768px){
     .logo-area h1{font-size:1.7rem}
     .hero h2{font-size:1.8rem}
@@ -370,4 +440,16 @@ footer{
     .navigation-buttons{flex-direction:column;align-items:stretch}
     .nav-button{text-align:center}
     .civica-reflection-final{padding:1.1rem}
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+        box-shadow: none;
+        margin-top: 0.5rem;
+    }
+    .has-dropdown:hover .dropdown-menu {
+        display: block;
+    }
 }
