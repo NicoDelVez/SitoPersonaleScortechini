@@ -453,3 +453,77 @@ footer{
         display: block;
     }
 }
+.responsive-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Opzionale: arrotonda gli angoli */
+    margin: 15px auto;   /* Centra l'immagine e dà respiro */
+}
+
+
+/* Contenitore che affianca le immagini */
+.gallery-container {
+    display: flex;         /* Attiva il layout ad affiancamento */
+    gap: 15px;             /* Crea uno spazio di 15px tra le due immagini */
+    margin-bottom: 20px;   /* Stacca le immagini dall'elenco puntato sotto */
+    flex-wrap: wrap;       /* Se lo schermo è troppo piccolo, le rimette una sotto l'altra */
+}
+
+/* Regola per le singole immagini */
+.gallery-img {
+    flex: 1;               /* Fa in modo che le immagini abbiano la stessa larghezza */
+    min-width: 250px;      /* Impedisce alle immagini di rimpicciolirsi troppo */
+    max-width: 320px;      /* Imposta la larghezza massima desiderata per le immagini */
+    height: auto;          /* Mantiene le proporzioni corrette dell'altezza */
+    border-radius: 6px;    /* Arrotonda leggermente gli angoli */
+}
+
+/* Layout del singolo progetto a tutta pagina */
+.project-row {
+    width: 100%;
+    background: #fff; /* O il colore di sfondo delle tue vecchie card */
+    padding: 25px;
+    margin-bottom: 40px; /* Spazio generoso tra un progetto e l'altro */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Effetto ombra leggero */
+    box-sizing: border-box;
+}
+
+/* Stile per i testi del progetto */
+.project-info h3 {
+    font-size: 1.8rem; /* Titolo più grande e importante */
+    margin-top: 0;
+    color: #333;
+}
+
+.project-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Contenitore delle immagini grandi a tutta larghezza */
+.gallery-container-large {
+    display: flex;
+    gap: 20px;          /* Più spazio tra le due immagini grandi */
+    flex-wrap: wrap;    /* Se lo schermo è piccolo vanno una sotto l'altra */
+    width: 100%;
+}
+
+/* Le singole immagini ora sono molto più grandi */
+.gallery-img-large {
+    flex: 1;
+    min-width: 450px;   /* Impone alle immagini di essere grandi (almeno 450px l'una) */
+    max-height: 350px;  /* Limita l'altezza massima per non farle diventare gigantesche in verticale */
+    object-fit: cover;  /* Taglia l'immagine in modo perfetto senza distorcerla */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Soluzione per schermi piccoli (Smartphone) */
+@media (max-width: 768px) {
+    .gallery-img-large {
+        min-width: 100%; /* Sui telefoni le immagini prendono il 100% dello schermo e si mettono una sotto l'altra */
+    }
+}
